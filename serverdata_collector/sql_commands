@@ -1,0 +1,8 @@
+\copy servers (hostname,os,osrel,total_m,cpubrand,cores,arch,server_brand,virt_role,virt_type) from '/home/seeker/tools/project_scripts/hpv1/var/tmp/info.csv' delimiter ',' csv header;
+
+#from the bash prompt
+psql -U seeker -d serverdata  -c "\copy servers (hostname,os,osrel,total_m,cpubrand,cores,arch,server_brand,virt_role,virt_type) from '/home/seeker/tools/project_scripts/hpv1/var/tmp/info.csv' delimiter ',' csv header;"
+
+[seeker@database-centos8 project_scripts]$ psql -U seeker -d serverdata  -c "\copy rpm_packages  (hostname,rpm_name,rpm_version,rpm_release) from '/home/seeker/tools/project_scripts/servers/centos1/var/tmp/packages.csv' with (format csv);"
+COPY 1385
+[seeker@database-centos8 project_scripts]$ psql -U seeker -d serverdata  -c "\copy rpm_packages  (hostname,rpm_name,rpm_version,rpm_release) from '/home/seeker/tools/project_scripts/servers/hpv1/var/tmp/packages.csv' with (format csv);"
