@@ -1,38 +1,29 @@
-Role Name
-=========
-
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
-
-Role Variables
---------------
-
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
-Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
 License
 -------
 
 BSD
 
-Author Information
-------------------
+Description
+-----------
+Playbook "main.yml" is used to capture 
+ - Generic server info such as, hostname, CPU Brand, RAM capacity, Hardware brand etc.
+ - {{ansible_facts.packages}} to collect all installed rpm packages
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+The playbook in turn copies the remote files locally to the ansible control node.
+Then the playbook executes local actions to insert the data to a postgres database.
+
+The database consists of two tables so far.
+ - servers -- Which contains the generic info as mentioned above.
+ - rpm_packages -- Which contains all installed RPMs.
+
+The servers table uses the "hostname" as a primary key.
+The rpm_packages table uses the "hostname" field from table "servers" as a FK.
+
+It should be noted that each time the playbook all tables are truncated so the latest status of all servers will be views.
+
+In Progress:
+ - Insert the RPM packages data to a backup table so you have a comparison (pre/post) change
+ - Insert SAR performance data to a new table
+ - Generate custom facts through bash scripts to collect data not available in ansible_facts
+ - Start optimizing the database
+
