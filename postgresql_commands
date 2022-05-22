@@ -1,4 +1,4 @@
-#DOWNLOAD SCHEMA - NA DATA
-psql -d name_of_schema
+#DOWNLOAD SCHEMA WITH CREATE STATEMENTS - NA DATA
+pg_dump -Cs name_of_database > /var/tmp/name_of_schema
 
 
