@@ -1,0 +1,4 @@
+#DOWNLOAD SCHEMA - NA DATA
+psql -d name_of_schema
+
+
