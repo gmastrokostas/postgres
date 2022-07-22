@@ -1,4 +1,6 @@
-#DOWNLOAD SCHEMA WITH CREATE STATEMENTS - NA DATA
-pg_dump -Cs name_of_database > /var/tmp/name_of_schema
+#Restore data from one db to another with different schemas
+pg_dump --data-only -d serverdata  -f data_only
 
-
+#With sed change the schema name and then upload the data to
+#the database with the different schema
+psql -d serverdata -f data_only
