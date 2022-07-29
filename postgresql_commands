@@ -14,3 +14,10 @@ pg_dump --data-only -d serverdata  -f data_only
 #With sed change the schema name and then upload the data to
 #the database with the different schema
 psql -d serverdata -f data_only
+
+#-----------------------------------------------
+#Import data from a CSV file. For this you will need to
+#execute this while logged in the database.
+#This assumed your CSV file does not have headers
+copy servers   from '/home/seeker/server_data_collector/servers/centos1/var/tmp/servers.csv' DELIMITER '|';
+
