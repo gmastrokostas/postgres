@@ -21,3 +21,5 @@ psql -d serverdata -f data_only
 #This assumed your CSV file does not have headers
 copy servers   from '/home/seeker/server_data_collector/servers/centos1/var/tmp/servers.csv' DELIMITER '|';
 
+#Using the command line with out logging to the server to perform the import from a CSV file
+psql -c "\copy servers from 'servers.csv' DELIMITER '|'" -d serverdata
