@@ -1,4 +1,5 @@
-#Restore data from one db to another with different schemas
+#HOW TO CREATE A DATADUMP AND UPLOAD TO A DB WITH A DIFFERENT SCHEMA NAME
+#create a datadump
 pg_dump --data-only -d serverdata  -f data_only
 
 #With sed change the schema name and then upload the data to
