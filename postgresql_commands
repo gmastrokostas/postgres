@@ -1,3 +1,12 @@
+#HOT GENERATE A SCHEMA ONLY DATADUMP AND THEN RESTORE IT
+#Create the schema dump
+psql  -d serverdata -U seeker < schema_only_dump.sql
+
+#Restore the data
+psql -d serverdata < schema_only.sql
+
+#-------------------------------------------------
+
 #HOW TO CREATE A DATADUMP AND UPLOAD TO A DB WITH A DIFFERENT SCHEMA NAME
 #create a datadump
 pg_dump --data-only -d serverdata  -f data_only
